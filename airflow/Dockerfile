@@ -1,21 +1,31 @@
-FROM apache/airflow:2.4.3-python3.8
+FROM apache/airflow:2.5.0-python3.10
 
 USER root
 
 # Airflow
 ARG AIRFLOW_USER_HOME=/opt/airflow
 ENV AIRFLOW_HOME=${AIRFLOW_USER_HOME}
+ENV AIRFLOW_VERSION="2.5.0"
 ENV ACCEPT_EULA=Y
 
 RUN set -ex \
     && buildDeps=' \
+        libpq-dev \
+        libpq5 \
         freetds-dev \
         libkrb5-dev \
         libsasl2-dev \
         libssl-dev \
+        build-essential \
+        python-dev \
+        python3-dev \
+        g++ \
+        gcc \
+        libc-dev \
         libffi-dev \
-        libpq-dev \
         git \
+        libsasl2-2 \
+        libsasl2-modules-gssapi-mit \
     ' \
     && apt-get update -y \
     && apt-get upgrade -y \
@@ -45,10 +55,14 @@ COPY ./airflow.cfg ${AIRFLOW_USER_HOME}/airflow.cfg
 
 RUN chown -R airflow: ${AIRFLOW_USER_HOME}
 
+RUN chmod -R 777 ${AIRFLOW_USER_HOME}
+
 USER airflow
 
 COPY ./requirements.txt .
 
-RUN pip install -U pip setuptools wheel &&\
-    pip install --upgrade pip
-    # pip install --no-cache-dir -r ./requirements.txt
+RUN pip install -U pip setuptools wheel && \
+    pip install --upgrade pip  && \
+    pip install psycopg2-binary && \
+    pip install apache-airflow && \
+    pip install --no-cache-dir -r ./requirements.txt

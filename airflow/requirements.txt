@@ -1,12 +1,8 @@
 psycopg2
-pytz
-pyOpenSSL
-ndg-httpsclient
-pyasn1
-apache-airflow[async,crypto,celery,ftp,postgres,mysql,ssh,google,google_auth,http,ldap,microsoft.azure,odbc,pandas,sendgrid,sftp,slack,statsd,virtualenv]
 redis
 pygsheets
-apache-airflow-providers-postgres[amazon]
-azure-identity 
+azure-identity
 azure-storage-blob
 apache-airflow-providers-databricks[common.sql]
+apache-airflow-providers-postgres[amazon]
+apache-airflow[async,crypto,celery,ftp,postgres,ssh,google,google_auth,http,microsoft.azure,ldap,odbc,pandas,sendgrid,sftp,slack,statsd,virtualenv]==2.5.0
