@@ -1,0 +1,13 @@
+https://github.com/puckel/docker-airflow
+
+https://github.com/xnuinside/airflow_in_docker_compose
+    https://xnuinside.medium.com/quick-tutorial-apache-airflow-with-3-celery-workers-in-docker-composer-9f2f3b445e4
+
+https://github.com/razevedo1994/airflow_and_spark_docker_environment
+
+https://github.com/apache/airflow
+
+https://github.com/apache/airflow/blob/main/Dockerfile
+
+https://github.com/xnuinside/airflow_in_docker_compose/blob/main/archive/docker_with_puckel_image/airflow_celeryexecutor.cfg
+
